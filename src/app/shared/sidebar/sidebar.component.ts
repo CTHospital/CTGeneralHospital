@@ -153,4 +153,9 @@ export class SidebarComponent {
   changePassword(){
     this.router.navigate(['shared/sidebar/user/design/',this.loggedInUserEmail])
   }
+  logout()
+  {
+    sessionStorage.clear();
+    this.router.navigate(['/'])
+  }
 }
