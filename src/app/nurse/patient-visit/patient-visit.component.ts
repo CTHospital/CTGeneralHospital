@@ -715,6 +715,7 @@ export class PatientVisitComponent implements OnInit {
         this.patientVisitDetails
       )
       .subscribe();
+    window.alert('Visit Details added successfully!');
   }
 
   deleteDiagnosis(row: any) {

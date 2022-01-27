@@ -1,4 +1,7 @@
-<div class="main" fxLayout="row wrap" id="content">
+<div [hidden] = "isVisitAvailable">
+
+
+<div class="main" fxLayout="row wrap" id="content" >
     <div class="sub1" fxFlex.gt-sm="100" fxFlex.gt-lg="100" fxFlex="100" style="padding: 10px;"
         *ngFor="let history of visitDetails;let i = index">
         <mat-card>
@@ -163,10 +166,10 @@
 <div class="main" fxLayout="row wrap">
     <div class="sub1" fxFlex.gt-sm="100" fxFlex.gt-lg="100" fxFlex="100" style="padding: 10px;">
         <button mat-raised-button color="primary" style="background-color: #03A66A;width: 30vh"
-            class="submitButton" (click) = "downloadPdf()">Download Report</button>
+            class="submitButton" (click) = "downloadPdf()"><mat-icon>print</mat-icon></button>
     </div>
 </div>
-
-<!-- <div *ngIf="isVisitAvailable">
+</div>
+<div [hidden] = "isVisitNotAvailable">
     <h2>Visit history not available</h2>
-</div> -->
+</div>

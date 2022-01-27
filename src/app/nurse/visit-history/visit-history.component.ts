@@ -22,7 +22,8 @@ export class VisitHistoryComponent implements OnInit {
   appointmentDetails:Appointments[] = [];
   patientDetailsFromLogin!:PatientRegistration;
   userDetailsFromLogin!:User;
-  isVisitAvailable:boolean =false;
+  isVisitNotAvailable:boolean =true;
+  isVisitAvailable:boolean = false;
   constructor(
     private fb: FormBuilder,
     private route: ActivatedRoute,
@@ -45,7 +46,7 @@ export class VisitHistoryComponent implements OnInit {
         response.forEach(element =>{
           console.log("Element data: " ,  element)
           this.visitDetails.push(element);
-          // if(element.visitStatus === null){
+          // if(element.visitStatus.length === 0){
           //   this.isVisitAvailable = true;
           // }
         })
@@ -53,11 +54,13 @@ export class VisitHistoryComponent implements OnInit {
       })
 
       console.log("visit details" , this.visitDetails)
-      // if(this.visitDetails.length === 0){
-      //   this.isVisitAvailable = true;
-      // }else{
-      //   this.isVisitAvailable = false;
-      // }
+      if(this.visitDetails.length != 0){
+        this.isVisitNotAvailable = false;
+        this.isVisitAvailable = true;
+      }else{
+        this.isVisitNotAvailable = true;
+        this.isVisitAvailable =false;
+      }
      
 
     }
@@ -79,7 +82,7 @@ export class VisitHistoryComponent implements OnInit {
           })
   
         })
-  
+  // this.isVisitAvailable =false;
         console.log("visit details" , this.visitDetails)
         
   
