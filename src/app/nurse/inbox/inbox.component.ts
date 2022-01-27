@@ -123,6 +123,7 @@ export class InboxComponent implements OnInit {
       let name = this.employeeDetailsFromLogin.title + " " + this.employeeDetailsFromLogin.firstName + " " + this.employeeDetailsFromLogin.lastName;
       this.sendNoteForm.controls['senderName'].setValue(name);
       this.sendNoteForm.controls['senderSpecialisation'].setValue(this.employeeDetailsFromLogin.specialisation);
+      this.sendNoteForm.controls['responseStatus'].setValue("Sent");
       console.log("form: ",this.sendNoteForm.value);
     this.inboxService.sendNote(this.sendNoteForm.value).subscribe();
     
