@@ -164,6 +164,7 @@ export class LoginregistrationHomepageComponent implements OnInit {
   // this.patientRegistration.userRole = userRole;
   // console.log("PAtient registration data: " , this.patientRegistration)
    this.patientregistrationService.registerPatient(this.registerForm.value).subscribe();
+   this.registerForm.reset();
 
   }
 
@@ -220,7 +221,10 @@ export class LoginregistrationHomepageComponent implements OnInit {
     },
     (error) =>{
       
-      this.errorMessage = error;
+      this.errorMessage =`${error.status}`;
+      if(this.errorMessage === "500"){
+        window.alert("Invalid Credential.Please try again!")
+      }
       console.error('error caught in component', this.errorMessage)
       console.log(this.errorMessage)
     });

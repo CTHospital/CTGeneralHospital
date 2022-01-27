@@ -28,10 +28,10 @@ export class EditUserComponent implements OnInit {
   specialisation: string[] = [
     'Neurologists',
     'Radiologists',
-    'Anesthesiologists',
     'Psychiatrists',
     'Anesthesiologists',
     'Gynecologists',
+    'Nurse'
   ];
   ngOnInit(): void {
 
