@@ -31,10 +31,10 @@ export class RegisterUserComponent implements OnInit {
   specialisation: string[] = [
     'Neurologists',
     'Radiologists',
-    'Anesthesiologists',
     'Psychiatrists',
     'Anesthesiologists',
     'Gynecologists',
+    'Nurse'
   ];
   ngOnInit(): void {
     this.employeeId = this.route.snapshot.paramMap.get('index');
