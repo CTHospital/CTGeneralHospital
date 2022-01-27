@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild,ElementRef } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Appointments } from 'src/app/entities/appointments';
@@ -7,7 +7,8 @@ import { PatientVisit } from 'src/app/entities/patient-visit';
 import { User } from 'src/app/entities/user';
 import { PatientVisitService } from 'src/app/services/patient-visit.service';
 import { SchedulingService } from 'src/app/services/scheduling.service';
-
+import {jsPDF} from 'jspdf';
+import html2canvas from 'html2canvas';
 @Component({
   selector: 'app-visit-history',
   templateUrl: './visit-history.component.html',
@@ -15,6 +16,7 @@ import { SchedulingService } from 'src/app/services/scheduling.service';
 })
 export class VisitHistoryComponent implements OnInit {
 
+  @ViewChild('content',{static : false}) el!:ElementRef;
   pId!:any;
   visitDetails:PatientVisit[] =[];
   appointmentDetails:Appointments[] = [];
@@ -101,4 +103,43 @@ export class VisitHistoryComponent implements OnInit {
     
   }
 
+  downloadPdf(){
+    // let pdf = new jsPDF('p','pt','a4');
+ // pdf.text("Patient Visit History",10,10);
+    // pdf.html(this.el?.nativeElement,{
+    //   callback:(pdf) =>{
+    //     pdf.save("visit-history.pdf");
+    //   }
+    // });
+    let doc = new jsPDF();
+    let data = document.getElementById("content")
+   this.generatePdf(data);
+    
+  }
+
+  generatePdf(data:any){
+    html2canvas(data).then(canvas =>{
+      // let imgWidth =200;
+      // let imgHeight = (canvas.height * imgWidth/ canvas.width)
+      // let imgHeight = (canvas.height * imgWidth/ canvas.width)
+      const contentDataUrl = canvas.toDataURL('image/png')
+      let pdf = new jsPDF('p','pt','a4');
+      // let imgWidth = 270;
+      // let pageHeight = pdf.internal.pageSize.height;
+      // let imgHeight = (canvas.height * imgWidth) / canvas.width;
+      // var width = pdf.internal.pageSize.getWidth();
+// var height = pdf.internal.pageSize.getHeight();
+      // let heightLeft = imgHeight;
+      // let position = 10
+      const imgProps= pdf.getImageProperties(contentDataUrl);
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+      pdf.addImage(contentDataUrl, 'PNG', 0, 0, pdfWidth, pdfHeight);
+      // var position = 10;
+      // pdf.addImage(contentDataUrl,'JPEG',0,0,width,height);
+      pdf.save("visitHistory.pdf");
+    })
+  }
 }
+
+
