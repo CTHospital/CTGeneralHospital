@@ -24,6 +24,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { AfterRegLendingPageComponent } from './after-reg-lending-page/after-reg-lending-page.component';
 import { DefaultComponent } from './default/default.component';
 import { ForgetpasswordComponent } from './forgetpassword/forgetpassword.component';
+import { AuthGuard } from '../auth.guard';
 
 const routes: Routes = [
   {
@@ -41,6 +42,7 @@ const routes: Routes = [
   {
     path: 'loginregistration-homepage',
     component: LoginregistrationHomepageComponent,
+    
   },
   {
     path: 'afterreg-lendingpage',
@@ -53,6 +55,7 @@ const routes: Routes = [
   { path: 'shared/', redirectTo: '/shared', pathMatch: 'full' },
   {
     path: 'shared',
+    canActivate:[AuthGuard],
     loadChildren: () =>
       import('src/app/shared/shared.module').then((m) => m.SharedModule),
   },
