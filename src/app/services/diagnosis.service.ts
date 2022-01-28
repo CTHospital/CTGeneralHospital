@@ -19,4 +19,9 @@ export class DiagnosisService {
   {
     return this.httpClient.get<Diagnosis>("http://localhost:9005/diagnosis/" + dcode);
   }
+
+  addDiagnosis(data:Diagnosis): Observable<Diagnosis>{
+    return this.httpClient.post<Diagnosis>("http://localhost:9005/diagnosis",data);
+  }
+
 }

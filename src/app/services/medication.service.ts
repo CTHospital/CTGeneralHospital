@@ -23,4 +23,8 @@ export class MedicationService {
   getDrugDetailsByDrugId(drugId:any):Observable<Medication>{
     return this.httpClient.get<Medication>("http://localhost:9005/medication/drug/" + drugId);
   }
+
+  addMedication(data:Medication): Observable<Medication>{
+    return this.httpClient.post<Medication>("http://localhost:9005/medication",data);
+  }
 }

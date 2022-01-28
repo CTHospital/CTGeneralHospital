@@ -1,0 +1,126 @@
+<div class="main" fxLayout="row wrap">
+    <div class="sub1" fxFlex.gt-sm="100" fxFlex.gt-lg="100" fxFlex="100" style="padding: 10px">
+      <mat-tab-group mat-stretch-tabs class="example-stretched-tabs mat-elevation-z4">
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <!-- <mat-icon>send</mat-icon> -->
+           Diagnosis
+          </ng-template>
+          <div class="sub1" fxFlex.gt-sm="100" fxFlex.gt-lg="100" fxFlex="100" style="padding: 10px">
+            <form class="example-form" [formGroup]="diagnosisForm" (ngSubmit)="addDiagnosis()">
+              <h2 style="color: #0055D2;padding: 10px;;">Add New Diagnosis</h2>
+              <div fxLayout="row wrap">
+               
+                <div fxFlex.gt-sm="20" fxFlex.gt-lg="100" fxFlex="100" style="padding: 10px">
+                    <mat-form-field appearance="fill" class="example-full-width" style="width: 100%">
+                        <mat-label>Diagnosis Code</mat-label>
+                        <input matInput formControlName="diagnosisCode" />
+                        <!-- <input matInput data-ng-model="employees.specialisation" formControlName="receiverSpecialisation" /> -->
+                      </mat-form-field>
+                </div>
+                <div fxFlex.gt-sm="40" fxFlex.gt-lg="100" fxFlex="100" style="padding: 10px">
+                  <mat-form-field appearance="fill" class="example-full-width" style="width: 100%">
+                    <mat-label>Description</mat-label>
+                    <input matInput formControlName="diagnosisDescription" />
+                    <!-- <input matInput data-ng-model="employees.specialisation" formControlName="receiverSpecialisation" /> -->
+                  </mat-form-field>
+                </div>
+
+                <div fxFlex.gt-sm="30" fxFlex.gt-lg="100" fxFlex="100" style="padding: 10px">
+                  <mat-radio-group aria-label="Select an option" class="example-full-width"
+                                style="width: 100%;" formControlName="diagnosisIsDepricated" >
+                                <mat-label>Is Deprecated : </mat-label>
+                                <mat-radio-button value="true" [checked]= "true">Yes</mat-radio-button> &nbsp;
+                                <mat-radio-button value="false">No</mat-radio-button>
+                            </mat-radio-group>
+                </div>
+                
+                <div fxFlex.gt-sm="10" fxFlex.gt-lg="100" fxFlex="100" style="padding: 10px">
+                    <button mat-raised-button color="primary" style="background-color: #03a66a; width: 100%">
+                      <mat-icon>add</mat-icon>
+                    </button>
+                  </div>
+              </div>
+            </form>
+          </div>
+        </mat-tab>
+        <mat-tab>
+          <ng-template mat-tab-label>
+          Procedure
+          </ng-template>
+          <div class="sub1" fxFlex.gt-sm="100" fxFlex.gt-lg="100" fxFlex="100" style="padding: 10px">
+            <form class="example-form" [formGroup]="diagnosisForm" (ngSubmit)="addProcedure()">
+              <h2 style="color: #0055D2;padding: 10px;;">Add New Procedure</h2>
+              <div fxLayout="row wrap">
+               
+                <div fxFlex.gt-sm="20" fxFlex.gt-lg="100" fxFlex="100" style="padding: 10px">
+                    <mat-form-field appearance="fill" class="example-full-width" style="width: 100%">
+                        <mat-label>Procedure Code</mat-label>
+                        <input matInput formControlName="procedureCode" />
+                        <!-- <input matInput data-ng-model="employees.specialisation" formControlName="receiverSpecialisation" /> -->
+                      </mat-form-field>
+                </div>
+                <div fxFlex.gt-sm="40" fxFlex.gt-lg="100" fxFlex="100" style="padding: 10px">
+                  <mat-form-field appearance="fill" class="example-full-width" style="width: 100%">
+                    <mat-label>Description</mat-label>
+                    <input matInput formControlName="procedureDescription" />
+                    <!-- <input matInput data-ng-model="employees.specialisation" formControlName="receiverSpecialisation" /> -->
+                  </mat-form-field>
+                </div>
+
+                <div fxFlex.gt-sm="30" fxFlex.gt-lg="100" fxFlex="100" style="padding: 10px">
+                  <mat-radio-group aria-label="Select an option" class="example-full-width"
+                                style="width: 100%;" formControlName="procedureIsDepricated" >
+                                <mat-label>Is Deprecated : </mat-label>
+                                <mat-radio-button value="true" [checked]= "true">Yes</mat-radio-button> &nbsp;
+                                <mat-radio-button value="false">No</mat-radio-button>
+                            </mat-radio-group>
+                </div>
+                
+                <div fxFlex.gt-sm="10" fxFlex.gt-lg="100" fxFlex="100" style="padding: 10px">
+                    <button mat-raised-button color="primary" style="background-color: #03a66a; width: 100%">
+                      <mat-icon>add</mat-icon>
+                    </button>
+                  </div>
+              </div>
+            </form>
+          </div>
+        </mat-tab>
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <!-- <mat-icon >send</mat-icon> -->
+            Medication
+          </ng-template>
+          <div class="sub1" fxFlex.gt-sm="100" fxFlex.gt-lg="100" fxFlex="100" style="padding: 10px">
+            <form class="example-form" [formGroup]="diagnosisForm" (ngSubmit)="addDiagnosis()">
+              <h2 style="color: #0055D2;padding: 10px;;">Add New Diagnosis</h2>
+              <div fxLayout="row wrap">
+               
+                <div fxFlex.gt-sm="20" fxFlex.gt-lg="100" fxFlex="100" style="padding: 10px">
+                    <mat-form-field appearance="fill" class="example-full-width" style="width: 100%">
+                        <mat-label>Drug ID</mat-label>
+                        <input matInput formControlName="drugID" />
+                        <!-- <input matInput data-ng-model="employees.specialisation" formControlName="receiverSpecialisation" /> -->
+                      </mat-form-field>
+                </div>
+                <div fxFlex.gt-sm="40" fxFlex.gt-lg="100" fxFlex="100" style="padding: 10px">
+                  <mat-form-field appearance="fill" class="example-full-width" style="width: 100%">
+                    <mat-label>Drug Name</mat-label>
+                    <input matInput formControlName="drugName" />
+                    <!-- <input matInput data-ng-model="employees.specialisation" formControlName="receiverSpecialisation" /> -->
+                  </mat-form-field>
+                </div>
+                
+                <div fxFlex.gt-sm="10" fxFlex.gt-lg="100" fxFlex="100" style="padding: 10px">
+                    <button mat-raised-button color="primary" style="background-color: #03a66a; width: 100%">
+                      <mat-icon>add</mat-icon>
+                    </button>
+                  </div>
+              </div>
+            </form>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+  

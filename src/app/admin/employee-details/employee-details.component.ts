@@ -7,6 +7,8 @@ import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { windowWhen } from 'rxjs';
 import { Employee } from 'src/app/entities/employee';
 import { EmployeeService } from 'src/app/services/employee.service';
+import {jsPDF} from 'jspdf';
+import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-employee-details',
@@ -81,5 +83,23 @@ export class EmployeeDetailsComponent implements OnInit {
   editUser(row:Employee) {
     console.log("inside edit user",row.employeeId);
     this.router.navigate(["/shared/sidebar/admin/edit-user/"+row.employeeId]);
+  }
+
+  downloadEmployeeList(){
+    let doc = new jsPDF();
+    let data = document.getElementById("content")
+   this.generatePdf(data);
+  }
+
+  generatePdf(data:any){
+    html2canvas(data).then(canvas =>{
+      const contentDataUrl = canvas.toDataURL('image/png')
+      let pdf = new jsPDF('p','pt','a4');
+      const imgProps= pdf.getImageProperties(contentDataUrl);
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+      pdf.addImage(contentDataUrl, 'PNG', 0, 0, pdfWidth, pdfHeight);
+      pdf.save("employeeDetails.pdf");
+    })
   }
 }
