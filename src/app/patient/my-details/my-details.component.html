@@ -1,5 +1,7 @@
 <!-- second section -->
+
 <div [hidden]="block1">
+  <div id="content">
   <div class="bounds backer" style="padding-left: 5px">
     <div class="content" fxLayout="row" fxLayout.xs="column" fxFlexFill>
       <div fxFlex="44" class="sec1" fxFlex.xs="55">
@@ -73,7 +75,7 @@
         >
         </button>
         <button mat-raised-button class="btn" type="button">
-          Download<mat-icon aria-hidden="false"  (click) = "downloadDetails()"  aria-label="Example home icon"
+          Download<mat-icon aria-hidden="false"  (click) = "getPdfData()"  aria-label="Example home icon"
             >download</mat-icon
           >
         </button>
@@ -192,6 +194,7 @@
     style="color: yellow; cursor: pointer"
     >Edit</a
   > -->
+</div>
 </div>
 
 <!-- third section -->
