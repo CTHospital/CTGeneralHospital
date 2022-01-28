@@ -3,7 +3,8 @@ import { Patient } from 'src/app/entities/patient';
 import { PatientRegistration } from 'src/app/entities/patient-registration';
 import { PatientService } from 'src/app/services/patient.service';
 import * as XLXS from 'xlsx';
-
+import {jsPDF} from 'jspdf';
+import html2canvas from 'html2canvas';
 
 
 @Component({
@@ -54,5 +55,35 @@ export class GetMyDataComponent implements OnInit {
     XLXS.utils.book_append_sheet(wb, ws, 'Patient Details');
 
     XLXS.writeFile(wb, this.fileName);
+
+    //generate  pdf
+
+  //   let doc = new jsPDF();
+  //   let data = document.getElementById("content")
+  //  this.generatePdf(data);
+    
    }
+   generatePdf(data:any){
+    html2canvas(data).then(canvas =>{
+      // let imgWidth =200;
+      // let imgHeight = (canvas.height * imgWidth/ canvas.width)
+      // let imgHeight = (canvas.height * imgWidth/ canvas.width)
+      const contentDataUrl = canvas.toDataURL('image/png')
+      let pdf = new jsPDF('p','pt','a4');
+      // let imgWidth = 270;
+      // let pageHeight = pdf.internal.pageSize.height;
+      // let imgHeight = (canvas.height * imgWidth) / canvas.width;
+      // var width = pdf.internal.pageSize.getWidth();
+// var height = pdf.internal.pageSize.getHeight();
+      // let heightLeft = imgHeight;
+      // let position = 10
+      const imgProps= pdf.getImageProperties(contentDataUrl);
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+      pdf.addImage(contentDataUrl, 'PNG', 0, 0, pdfWidth, pdfHeight);
+      // var position = 10;
+      // pdf.addImage(contentDataUrl,'JPEG',0,0,width,height);
+      pdf.save("PatientInfo.pdf");
+    })
+  }
 }
