@@ -19,4 +19,8 @@ export class ProcedureService {
   {
     return this.httpClient.get<Procedure>("http://localhost:9005/procedure/" + dcode);
   }
+
+  addProcedure(data:Procedure): Observable<Procedure>{
+    return this.httpClient.post<Procedure>("http://localhost:9005/procedure",data);
+  }
 }

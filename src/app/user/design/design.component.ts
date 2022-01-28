@@ -101,26 +101,30 @@ export class DesignComponent implements OnInit {
     this.form.reset();
     if(this.userDetails.userRoleId.roleType==="Patient")
     {
+      // window.alert("Password is changed successfully!");
       this.router.navigate(['/shared/sidebar/patient']);
     }
     else if(this.userDetails.userRoleId.roleType==="Physician")
     {
+      // window.alert("Password is changed successfully!");
       this.router.navigate(['/shared/sidebar/doctor']);
 
     }
     else if(this.userDetails.userRoleId.roleType==="Nurse")
     {
+      // window.alert("Password is changed successfully!");
       this.router.navigate(['/shared/sidebar/nurse']);
 
     }
     else if(this.userDetails.userRoleId.roleType==="Admin")
     {
+      // window.alert("Password is changed successfully!");
       this.router.navigate(['/shared/sidebar/admin/home']);
 
     }
     }
     else{
-      window.alert("please enter currect old password")
+      window.alert("please enter correct old password")
     }
     // this.router.navigate(['']);
   }

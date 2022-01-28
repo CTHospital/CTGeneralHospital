@@ -29,6 +29,8 @@ import {CardModule} from 'primeng/card';
 import { EmployeeDetailsComponent } from './employee-details/employee-details.component';
 import { ApprovePatientComponent } from './approve-patient/approve-patient.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
+import { UtilityComponent } from './utility/utility.component';
+import {MatTabsModule} from '@angular/material/tabs';
 const routes: Routes = [
   {
     path: '',
@@ -61,6 +63,10 @@ const routes: Routes = [
     component: ApprovePatientComponent,
   },
   {
+    path: 'utility',
+    component: UtilityComponent,
+  },
+  {
     path: 'nurse',
     loadChildren: () =>
     import('src/app/nurse/nurse.module').then((m) => m.NurseModule),
@@ -75,6 +81,7 @@ const routes: Routes = [
     EmployeeDetailsComponent,
     ApprovePatientComponent,
     EditUserComponent,
+    UtilityComponent,
   ],
   imports: [
     MatFormFieldModule,
@@ -100,6 +107,7 @@ const routes: Routes = [
     ToggleButtonModule,
     MatChipsModule,
     MatDialogModule,
+    MatTabsModule,
     RouterModule.forChild(routes)
   ],
 })

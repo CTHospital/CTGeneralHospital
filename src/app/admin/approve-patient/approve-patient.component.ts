@@ -6,7 +6,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Patient } from 'src/app/entities/patient';
 import { PatientRegistration } from 'src/app/entities/patient-registration';
 import { PatientRegistrationService } from 'src/app/services/patientRegistration.service';
-
+import {jsPDF} from 'jspdf';
+import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-approve-patient',
@@ -62,5 +63,24 @@ export class ApprovePatientComponent implements OnInit {
 
   updateStatus(status:any) {
     return status;
+  }
+
+  downloadPatientList(){
+    let doc = new jsPDF();
+    let data = document.getElementById("content")
+   this.generatePdf(data);
+  }
+
+  generatePdf(data:any){
+    html2canvas(data).then(canvas =>{
+      const contentDataUrl = canvas.toDataURL('image/png')
+      let pdf = new jsPDF('p','pt','a4');
+      pdf.text("Approve Patient list",10,10)
+      const imgProps= pdf.getImageProperties(contentDataUrl);
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+      pdf.addImage(contentDataUrl, 'PNG', 0, 0, pdfWidth, pdfHeight);
+      pdf.save("approovePatientDetails.pdf");
+    })
   }
 }
