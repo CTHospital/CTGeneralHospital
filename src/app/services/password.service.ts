@@ -41,10 +41,11 @@ export class PasswordService {
     }
     if(errorMessage==="201")
     {
-    window.alert("Password Successfully changed");
+    window.alert("Password is changed Successfully!");
     
     }
-    else{
+
+    if(errorMessage === "500"){
       window.alert("new password must be different from last 10 password")
     }
     return throwError(errorMessage);
